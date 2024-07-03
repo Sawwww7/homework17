@@ -8,12 +8,13 @@
 // l (маленька затримка)
 // o (велика затримка)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const randomDelayPrint=(message) => {  
-  let arrLetter= message.split('')
-  arrLetter.forEach((letter, i)=> setTimeout(() => console.log(letter), Math.floor((Math.random()+i) * 500)))
-}
-randomDelayPrint("Hello World")
-
+const randomDelayPrint = (message) => {
+  let arrLetter = message.split("");
+  arrLetter.forEach((letter, i) =>
+    setTimeout(() => console.log(letter), Math.floor((Math.random() + i) * 500))
+  );
+};
+randomDelayPrint("Hello World");
 
 /*const randomDelayPrint2=(message) => {
    const timeout= (i) => {if(i===0){return  500}  else if (i===1){return 1500} else if(i===2){return 1800} else if(i===3){return 2100}
@@ -29,11 +30,13 @@ randomDelayPrint("Hello World")
  як минула вказана кількість часу без викликів.
  Це дасть змогу ігнорувати часті виклики функції та виконувати її лише один раз через зазначену затримку після останнього виклику.*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function debounce(func, timeout = 1000){
+function debounce(func, timeout = 1000) {
   let timer;
   return (...args) => {
     clearTimeout(timer);
-    timer = setTimeout(() => { func.apply(this, args); }, timeout);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
   };
 }
 const say = () => {
@@ -42,12 +45,12 @@ const say = () => {
 
 const processChange = debounce(say);
 
-processChange( )
-processChange( )
-processChange( )
-processChange( )
-processChange( )
-setTimeout(processChange, 3000)
+processChange();
+processChange();
+processChange();
+processChange();
+processChange();
+setTimeout(processChange, 3000);
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*intervalRace.Створіть функцію intervalRace, яка прийматиме масив функцій та інтервал часу t у мілісекундах.
  Функція intervalRace має викликати кожну функцію з масиву по черзі через заданий інтервал часу t. 
@@ -60,9 +63,13 @@ const fn5 = () => "fn5";
 const arrFunc = [fn1, fn2, fn3, fn4, fn5];
 
 const intervalRace = (arrFunc, time) => {
-  const rezultArr =[]
-  arrFunc.forEach((func, i) => setTimeout(() =>{rezultArr.push(func()), console.log(func())}, (1+i)*time ))
-   return rezultArr
+  const rezultArr = [];
+  arrFunc.forEach((func, i) =>
+    setTimeout(() => {
+      rezultArr.push(func()), console.log(func());
+    }, (1 + i) * time)
+  );
+  return rezultArr;
 };
 console.log(intervalRace(arrFunc, 2000));
 /////////////////////////////////////////////////////////////////////////
