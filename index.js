@@ -8,13 +8,13 @@
 // l (маленька затримка)
 // o (велика затримка)
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*const randomDelayPrint = (message) => {
+const randomDelayPrint = (message) => {
   let arrLetter = message.split("");
   arrLetter.forEach((letter, i) =>
     setTimeout(() => console.log(letter), Math.floor((Math.random() + i) * 500))
   );
 };
-randomDelayPrint("Hello World");*/
+randomDelayPrint("Hello World");
 
 /*const randomDelayPrint2=(message) => {
    const timeout= (i) => {if(i===0){return  500}  else if (i===1){return 1500} else if(i===2){return 1800} else if(i===3){return 2100}
@@ -25,6 +25,7 @@ randomDelayPrint("Hello World");*/
  randomDelayPrint2("Hello World")  */
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//(ВАРИАНТ ЕСЛИ НУЖНО ЗАДАВАТЬ НЕОБХОДИМЫЙ ИНТЕРВАЛ ВЫВОДА БУКВ) СКОРЕЕ ВСЕГО УДАЛИТЬ:
 /*debounce. Створіть функцію debounce, яка приймає функцію зворотного виклику і затримку (в мілісекундах) як аргументи. 
 Функція debounce повинна повертати нову функцію, яка викликає вихідну функцію тільки після того,
  як минула вказана кількість часу без викликів.
@@ -35,27 +36,7 @@ debouncedExpensiveOperation();
 debouncedExpensiveOperation();
 // Через 1 секунду після останнього виклику "Виконую складну операцію..." має бути виведене в консоль тільки один раз.*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function debounce(func, timeout = 1000) {
-  let timer;
-  return (...args) => {
-    clearTimeout(timer);
-    timer = setTimeout(() => {
-      func.apply(this, args);
-    }, timeout);
-  };
-}
-const say = () => {
-  console.log("Hi");
-};
-
-const processChange = debounce(say);
-
-processChange();
-setTimeout(processChange, 500);
-setTimeout(processChange, 800);
-setTimeout(processChange, 3000);
-
-function debounce2(func, timeout = 1000) {
+/*function debounce(func, timeout = 1000) {
   let timer;
   return () => {
     clearTimeout(timer);
@@ -64,16 +45,37 @@ function debounce2(func, timeout = 1000) {
     }, timeout);
   };
 }
-///////////////////////////////////////////////////////////////
-const say2 = () => {
-  console.log("Hi ++");
-};
-const processChange2 = debounce(say2,2000);
+const expensiveOperation = () => console.log("Виконую складну операцію...");
+const debouncedExpensiveOperation = debounce(expensiveOperation, 1000);
 
-processChange2();
-setTimeout(processChange2, 500);
-setTimeout(processChange2, 900);
-setTimeout(processChange2, 3000);
+debouncedExpensiveOperation();
+debouncedExpensiveOperation();
+debouncedExpensiveOperation();
+//setTimeout(debouncedExpensiveOperation, 500);
+//setTimeout(debouncedExpensiveOperation, 900);
+//setTimeout(debouncedExpensiveOperation, 3000);*/
+
+///////////////////////////////////////////////////////////////
+//ВАРИАНТ С ПРИВЯЗКОЙ apply ????????
+/*function debounce2(func, timeout = 1000) {
+  let timer;
+  return (...args) => {
+    clearTimeout(timer);
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, timeout);
+  };
+}
+
+const expensiveOperation2 = () => console.log("Виконую складну операцію...");
+const debouncedExpensiveOperation2 = debounce(expensiveOperation2, 1000);
+
+debouncedExpensiveOperation2();
+debouncedExpensiveOperation2();
+debouncedExpensiveOperation2();
+//setTimeout(debouncedExpensiveOperation, 500);
+//setTimeout(debouncedExpensiveOperation, 900);
+//setTimeout(debouncedExpensiveOperation, 3000);*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*intervalRace.Створіть функцію intervalRace, яка прийматиме масив функцій та інтервал часу t у мілісекундах.
  Функція intervalRace має викликати кожну функцію з масиву по черзі через заданий інтервал часу t. 
@@ -94,5 +96,5 @@ const intervalRace = (arrFunc, time) => {
   );
   return rezultArr;
 };
-console.log(intervalRace(arrFunc, 2000));
-/////////////////////////////////////////////////////////////////////////*/
+console.log(intervalRace(arrFunc, 2000));*/
+/////////////////////////////////////////////////////////////////////////
