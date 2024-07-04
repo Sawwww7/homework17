@@ -11,11 +11,11 @@
 const randomDelayPrint = (message) => {
   let arrLetter = message.split("");
   arrLetter.forEach((letter, i) =>
-    setTimeout(() => console.log(letter), Math.floor((Math.random() + i) * 500))
+    setTimeout(() => console.log(letter), Math.floor((Math.random() /*+ i*/) * 1000)) //якщо в завданні мається на увазі затримка між виводом букв від 0 до 1 секунди то тоді потрібно розкомітити +i
   );
 };
 randomDelayPrint("Hello World");
-
+//(ВАРИАНТ ЕСЛИ НУЖНО ЗАДАВАТЬ НЕОБХОДИМЫЙ ИНТЕРВАЛ ВЫВОДА БУКВ) СКОРЕЕ ВСЕГО УДАЛИТЬ:
 /*const randomDelayPrint2=(message) => {
    const timeout= (i) => {if(i===0){return  500}  else if (i===1){return 1500} else if(i===2){return 1800} else if(i===3){return 2100}
    else if(i===4){return 2400}else if(i===5){return 34000} else{return i*1000} }
@@ -25,7 +25,7 @@ randomDelayPrint("Hello World");
  randomDelayPrint2("Hello World")  */
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//(ВАРИАНТ ЕСЛИ НУЖНО ЗАДАВАТЬ НЕОБХОДИМЫЙ ИНТЕРВАЛ ВЫВОДА БУКВ) СКОРЕЕ ВСЕГО УДАЛИТЬ:
+
 /*debounce. Створіть функцію debounce, яка приймає функцію зворотного виклику і затримку (в мілісекундах) як аргументи. 
 Функція debounce повинна повертати нову функцію, яка викликає вихідну функцію тільки після того,
  як минула вказана кількість часу без викликів.
@@ -91,7 +91,7 @@ const intervalRace = (arrFunc, time) => {
   const rezultArr = [];
   arrFunc.forEach((func, i) =>
     setTimeout(() => {
-      rezultArr.push(func()), console.log(func());
+      rezultArr.push(func()), /*console.log(func()*//*);
     }, (1 + i) * time)
   );
   return rezultArr;
