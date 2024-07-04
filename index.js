@@ -29,6 +29,11 @@ randomDelayPrint("Hello World");*/
 Функція debounce повинна повертати нову функцію, яка викликає вихідну функцію тільки після того,
  як минула вказана кількість часу без викликів.
  Це дасть змогу ігнорувати часті виклики функції та виконувати її лише один раз через зазначену затримку після останнього виклику.*/
+ /*const expensiveOperation = () => console.log("Виконую складну операцію..."); constdebouncedExpensiveOperation = debounce(expensiveOperation, 1000);
+debouncedExpensiveOperation();
+debouncedExpensiveOperation();
+debouncedExpensiveOperation();
+// Через 1 секунду після останнього виклику "Виконую складну операцію..." має бути виведене в консоль тільки один раз.*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function debounce(func, timeout = 1000) {
   let timer;
